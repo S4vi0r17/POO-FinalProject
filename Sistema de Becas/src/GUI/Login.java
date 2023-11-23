@@ -131,7 +131,7 @@ public class Login extends javax.swing.JFrame {
     }// GEN-LAST:event_fieldUsuarioLoginActionPerformed
 
     private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_botonLoginActionPerformed
-        if (fieldUsuarioLogin.getText().equals("evaluador") && fieldContraseniaLogin.getText().equals("evaluador")) {
+        if (fieldUsuarioLogin.getText().equals("") && fieldContraseniaLogin.getText().equals("")) {
             this.setVisible(false);
             new Evaluador().setVisible(true);
         } else if (fieldUsuarioLogin.getText().equals("postulante") && fieldContraseniaLogin.getText().equals("postulante")) {

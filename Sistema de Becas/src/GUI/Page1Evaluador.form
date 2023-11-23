@@ -39,7 +39,6 @@
                               <Component id="labelTelefonoEvaluador" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="fieldTelefonoEvaluador" min="-2" pref="128" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -150,6 +149,9 @@
           <Font name="Iosevka NFM Medium" size="18" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldNombreEvaluador2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="labelDireccionEvaluador">
       <Properties>

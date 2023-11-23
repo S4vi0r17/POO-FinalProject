@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package GUI;
-
+import Logic.PostulanteClass;
 /**
  *
  * @author GBP17
@@ -16,6 +16,47 @@ public class Page1Evaluador extends javax.swing.JPanel {
     public Page1Evaluador() {
         initComponents();
     }
+
+    public void setNombre(String nombre){
+        fieldNombreEvaluador2.setText(nombre);
+    }
+
+    public void setDireccion(String direccion){
+        fieldDireccionEvaluador.setText(direccion);
+    }
+
+    public void setDNI(String DNI){
+        fieldDNIEvaluador.setText(DNI);
+    }
+
+    public void setIE(String IE){
+        fieldIEEvaluador.setText(IE);
+    }
+
+    public void setCarrera(String carrera){
+        fieldIEEvaluador1.setText(carrera);
+    }
+
+    public void setPromedio(String promedio){
+        fieldIEEvaluador2.setText(promedio);
+    }
+
+    public void setIngresos(String ingresos){
+        fieldIngresosEvaluador.setText(ingresos);
+    }
+
+    public void setPersonas(String personas){
+        fieldPersonasEvaluador.setText(personas);
+    }
+
+    public void setBeca(String beca){
+        fieldBecaEvaluador.setText(beca);
+    }
+
+    public void setTelefono(String telefono){
+        fieldTelefonoEvaluador.setText(telefono);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +92,11 @@ public class Page1Evaluador extends javax.swing.JPanel {
         labelNombreEvaluador.setText("Nombres y Apellidos:");
 
         fieldNombreEvaluador2.setFont(new java.awt.Font("Iosevka NFM Medium", 0, 18)); // NOI18N
+        fieldNombreEvaluador2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldNombreEvaluador2ActionPerformed(evt);
+            }
+        });
 
         labelDireccionEvaluador.setFont(new java.awt.Font("Iosevka NFM Medium", 0, 18)); // NOI18N
         labelDireccionEvaluador.setText("Dirección");
@@ -195,6 +241,10 @@ public class Page1Evaluador extends javax.swing.JPanel {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fieldNombreEvaluador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNombreEvaluador2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldNombreEvaluador2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

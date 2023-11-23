@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import javax.swing.DefaultListModel;
 
 import Logic.PostulanteClass;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -23,31 +25,49 @@ public class Evaluador extends javax.swing.JFrame {
     Page1Evaluador page1 = new Page1Evaluador();
     Page2Evaluador page2 = new Page2Evaluador();
 
-    private PostulanteClass[] postulantes;
-    private DefaultListModel<String> listModel;
+    private DefaultListModel<PostulanteClass> listModel = new DefaultListModel<>();
 
     public Evaluador() {
 
+        // llenarDatos();
         initComponents();
         this.setLocationRelativeTo(null);
         showPanel(page1);
-        
-        // Crear postulantes ficticios
-        postulantes = new PostulanteClass[3];
-        postulantes[0] = new PostulanteClass("Juan Perez", "Av. Los Alamos 123", "12345678", "IE 123", "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "Pendiente");
-        postulantes[1] = new PostulanteClass("Maria Perez", "Av. Los Alamos 123", "12345678", "IE 123", "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "Pendiente");
-        postulantes[2] = new PostulanteClass("Pedro Perez", "Av. Los Alamos 123", "12345678", "IE 123", "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "Pendiente");
 
-        // Crear modelo de lista y añadir nombres de postulantes
-        listModel = new DefaultListModel<>();
-        for (PostulanteClass postulante : postulantes) {
-            listModel.addElement(postulante.getNombreCompletos());
-        }
-
-        // Asumiendo que tu JList se llama 'lista', establecer el modelo
-        lista.setModel(listModel);
+        llenarLista();
 
     }
+
+    private void llenarLista() {
+        // Crear instancias de PostulanteClass y agregarlas al listModel
+        PostulanteClass postulante1 = new PostulanteClass("Juan Perez", "Av. Los Alamos 123", "12345678", "IE 1223",
+                "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "Pendiente");
+        PostulanteClass postulante2 = new PostulanteClass("Maria Perez", "Av. Guayrcan", "4342342", "IE 1233",
+                "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "aprobado");
+        PostulanteClass postulante3 = new PostulanteClass("Pedro Perez", "Av. Los Alamos 123", "1145234998", "IE 554",
+                "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "Pendiente");
+
+        // Agregar los objetos PostulanteClass al listModel
+        listModel.addElement(postulante1);
+        listModel.addElement(postulante2);
+        listModel.addElement(postulante3);
+    }
+
+    // private void llenarDatos() {
+    //     PostulanteClass postulante = new PostulanteClass("Juan Perez", "Av. Los Alamos 123", "12345678", "IE 123",
+    //             "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "Pendiente");
+    //     postulante.setNombreCompletos("Juan Perez");
+    //     postulante.setDireccion("Av. Los Alamos 123");
+    //     postulante.setDNI("12345678");
+    //     postulante.setIE("IE 123");
+    //     postulante.setCarrera("Ingenieria de Sistemas");
+    //     postulante.setPromedio("15");
+    //     postulante.setIngresosFamiliares("1000");
+    //     postulante.setNumeroPersonasHogar("4");
+    //     postulante.setBeca("Si");
+    //     postulante.setTelefono("987654321");
+    //     postulante.setEstado("Pendiente");
+    // }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,7 +77,10 @@ public class Evaluador extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollBar1 = new javax.swing.JScrollBar();
@@ -76,15 +99,49 @@ public class Evaluador extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Iosevka NFM Medium", 3, 30)); // NOI18N
         jLabel1.setText("Evaluador");
 
-        lista.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item uno lista", "Item dos lista" };
+        lista.setModel(listModel);
+        ListSelectionListener oyenteSeleccion = new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (e.getValueIsAdjusting()) {
+                    int filaSeleccionada = lista.getSelectedIndex();
+                    PostulanteClass postulante = listModel.getElementAt(filaSeleccionada);
 
-            public int getSize() {
-                return strings.length;
+                    // Aquí puedes acceder a los métodos de PostulanteClass
+                    String nombre = postulante.getNombreCompletos();
+                    String direccion = postulante.getDireccion();
+                    String DNI = postulante.getDNI();
+                    String IE = postulante.getIE();
+                    String carrera = postulante.getCarrera();
+                    String promedio = postulante.getPromedio();
+                    String ingresosFamiliares = postulante.getIngresosFamiliares();
+                    String numeroPersonasHogar = postulante.getNumeroPersonasHogar();
+                    String beca = postulante.getBeca();
+                    String telefono = postulante.getTelefono();
+                    String estado = postulante.getEstado();
+
+                    // Resto del código que quieras realizar con los atributos obtenidos
+                    page1.setNombre(nombre);
+                    page1.setDireccion(direccion);
+                    page1.setDNI(DNI);
+                    page1.setIE(IE);
+                    page1.setCarrera(carrera);
+                    page1.setPromedio(promedio);
+                    page1.setIngresos(ingresosFamiliares);
+                    page1.setPersonas(numeroPersonasHogar);
+                    page1.setBeca(beca);
+                    page1.setTelefono(telefono);
+                    page2.setEstado(estado);
+
+                    showPanel(page1);
+                }
             }
+        };
 
-            public String getElementAt(int i) {
-                return strings[i];
+        lista.getSelectionModel().addListSelectionListener(oyenteSeleccion);
+        lista.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaValueChanged(evt);
             }
         });
         jScrollPane1.setViewportView(lista);
@@ -92,11 +149,13 @@ public class Evaluador extends javax.swing.JFrame {
         javax.swing.GroupLayout panelEvaluadorContentLayout = new javax.swing.GroupLayout(panelEvaluadorContent);
         panelEvaluadorContent.setLayout(panelEvaluadorContentLayout);
         panelEvaluadorContentLayout.setHorizontalGroup(
-                panelEvaluadorContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 610, Short.MAX_VALUE));
+            panelEvaluadorContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 610, Short.MAX_VALUE)
+        );
         panelEvaluadorContentLayout.setVerticalGroup(
-                panelEvaluadorContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE));
+            panelEvaluadorContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         botonSiguienteEvaluador.setFont(new java.awt.Font("Iosevka NFM Medium", 0, 18)); // NOI18N
         botonSiguienteEvaluador.setText("Más");
@@ -117,65 +176,61 @@ public class Evaluador extends javax.swing.JFrame {
         javax.swing.GroupLayout panelEvaluadorLayout = new javax.swing.GroupLayout(panelEvaluador);
         panelEvaluador.setLayout(panelEvaluadorLayout);
         panelEvaluadorLayout.setHorizontalGroup(
-                panelEvaluadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelEvaluadorLayout.createSequentialGroup()
-                                .addGap(351, 351, 351)
-                                .addComponent(jLabel1)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(panelEvaluadorLayout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45,
-                                        Short.MAX_VALUE)
-                                .addComponent(panelEvaluadorContent, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                panelEvaluadorLayout.createSequentialGroup()
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(botonEvaluadorAtras)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(botonSiguienteEvaluador)
-                                        .addGap(258, 258, 258)));
+            panelEvaluadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEvaluadorLayout.createSequentialGroup()
+                .addGap(351, 351, 351)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelEvaluadorLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(panelEvaluadorContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEvaluadorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonEvaluadorAtras)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonSiguienteEvaluador)
+                .addGap(258, 258, 258))
+        );
         panelEvaluadorLayout.setVerticalGroup(
-                panelEvaluadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelEvaluadorLayout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(jLabel1)
-                                .addGroup(panelEvaluadorLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(panelEvaluadorLayout.createSequentialGroup()
-                                                .addGap(36, 36, 36)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48,
-                                                        Short.MAX_VALUE))
-                                        .addGroup(panelEvaluadorLayout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(panelEvaluadorContent,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(18, 18, 18)))
-                                .addGroup(panelEvaluadorLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(botonSiguienteEvaluador)
-                                        .addComponent(botonEvaluadorAtras))
-                                .addGap(39, 39, 39)));
+            panelEvaluadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEvaluadorLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel1)
+                .addGroup(panelEvaluadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEvaluadorLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE))
+                    .addGroup(panelEvaluadorLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(panelEvaluadorContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)))
+                .addGroup(panelEvaluadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonSiguienteEvaluador)
+                    .addComponent(botonEvaluadorAtras))
+                .addGap(39, 39, 39))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelEvaluador, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelEvaluador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelEvaluador, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelEvaluador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void listaValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_listaValueChanged
+
+    }// GEN-LAST:event_listaValueChanged
 
     private void botonEvaluadorAtrasActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_botonEvaluadorAtrasActionPerformed
         showPanel(page1);
@@ -241,7 +296,7 @@ public class Evaluador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> lista;
+    private javax.swing.JList<PostulanteClass> lista;
     private javax.swing.JPanel panelEvaluador;
     private javax.swing.JPanel panelEvaluadorContent;
     // End of variables declaration//GEN-END:variables

@@ -115,5 +115,10 @@ public class PostulanteClass {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public String toString(){
+        // return nombreCompletos + " " + direccion + " " + DNI + " " + IE + " " + carrera + " " + promedio + " " + ingresosFamiliares + " " + numeroPersonasHogar + " " + beca + " " + telefono + " " + estado;
+        return nombreCompletos;
+    }
     
 }
