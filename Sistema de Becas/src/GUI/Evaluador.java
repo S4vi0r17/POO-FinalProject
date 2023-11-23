@@ -43,9 +43,9 @@ public class Evaluador extends javax.swing.JFrame {
         PostulanteClass postulante1 = new PostulanteClass("Juan Perez", "Av. Los Alamos 123", "12345678", "IE 1223",
                 "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "Pendiente");
         PostulanteClass postulante2 = new PostulanteClass("Maria Perez", "Av. Guayrcan", "4342342", "IE 1233",
-                "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "aprobado");
+                "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "Aprobado");
         PostulanteClass postulante3 = new PostulanteClass("Pedro Perez", "Av. Los Alamos 123", "1145234998", "IE 554",
-                "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "Pendiente");
+                "Ingenieria de Sistemas", "15", "1000", "4", "Si", "987654321", "Rechazado");
 
         // Agregar los objetos PostulanteClass al listModel
         listModel.addElement(postulante1);
