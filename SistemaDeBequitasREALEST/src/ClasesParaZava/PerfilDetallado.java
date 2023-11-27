@@ -4,26 +4,21 @@ import javax.swing.JOptionPane;
 public class PerfilDetallado extends javax.swing.JFrame {
 
     int index;
-    ArrayList<Solicitud> ListaPostulantes = new ArrayList<>();
     
-    public PerfilDetallado(int index, ArrayList<Solicitud> ListaPostulantes) {
-        this.ListaPostulantes = ListaPostulantes;
+    public PerfilDetallado(int index) {
         this.index = index;
         initComponents();
         
         //Muestra los datos según el index seleccionado anteriormente
-        mostrarNombre.setText(ListaPostulantes.get(index).getPostulante().getNombre() + " " + ListaPostulantes.get(index).getPostulante().getApellido());
-        mostrarEdad.setText(String.valueOf(ListaPostulantes.get(index).getPostulante().getEdad()));
-        mostrarDNI.setText(String.valueOf(ListaPostulantes.get(index).getPostulante().getDNI()));
-        mostrarPromedio.setText(String.valueOf(ListaPostulantes.get(index).getPostulante().getPerfil().getPromedio()));
-        mostrarSE.setText(String.valueOf(ListaPostulantes.get(index).getPostulante().getPerfil().getSituacionEconomica()));
-        mostrarOM.setText(String.valueOf(ListaPostulantes.get(index).getPostulante().getPerfil().getOrdenDeMerito()));
-        mostrarES.setText(String.valueOf(ListaPostulantes.get(index).getEstado()));
+        mostrarNombre.setText(SistemaDeBecas.listaPostulante.get(index).getNombre() + " " + SistemaDeBecas.listaPostulante.get(index).getApellido());
+        mostrarEdad.setText(String.valueOf(SistemaDeBecas.listaPostulante.get(index).getEdad()));
+        mostrarDNI.setText(String.valueOf(SistemaDeBecas.listaPostulante.get(index).getDNI()));
+        mostrarPromedio.setText(String.valueOf(SistemaDeBecas.listaPostulante.get(index).getPerfil().getPromedio()));
+        mostrarSE.setText(String.valueOf(SistemaDeBecas.listaPostulante.get(index).getPerfil().getSituacionEconomica()));
+        mostrarOM.setText(String.valueOf(SistemaDeBecas.listaPostulante.get(index).getPerfil().getOrdenDeMerito()));
+        mostrarES.setText(String.valueOf(SistemaDeBecas.listaSolicitudes.get(index).getEstado()));
     }
 
-    private PerfilDetallado(int index) {
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -191,11 +186,11 @@ public class PerfilDetallado extends javax.swing.JFrame {
     private void cambioBecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioBecaActionPerformed
             //Cambia el estado de la beca a desaprobada
             //si ya esta desaprobada muestra error
-            if(this.ListaPostulantes.get(index).isAprobada()==true){
-            this.ListaPostulantes.get(index).setAprobada(false);
-            this.ListaPostulantes.get(index).setEstado("Desaprobada");
+            if(SistemaDeBecas.listaSolicitudes.get(index).isAprobada()==true){
+            SistemaDeBecas.listaSolicitudes.get(index).setAprobada(false);
+            SistemaDeBecas.listaSolicitudes.get(index).setEstado("Desaprobada");
             JOptionPane.showMessageDialog(this, "Estado Cambiado con Éxito", "!", JOptionPane.INFORMATION_MESSAGE);
-            mostrarES.setText(String.valueOf(ListaPostulantes.get(index).getEstado()));
+            mostrarES.setText(String.valueOf(SistemaDeBecas.listaSolicitudes.get(index).getEstado()));
             }else JOptionPane.showMessageDialog(this, "Ya está desaprobada", "Error", JOptionPane.ERROR_MESSAGE);
             
     }//GEN-LAST:event_cambioBecaActionPerformed
@@ -203,11 +198,11 @@ public class PerfilDetallado extends javax.swing.JFrame {
     private void cambioBeca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioBeca1ActionPerformed
             //Cambia el estado de la beca a aprobada
             //si ya esta aprobada muestra error
-            if(this.ListaPostulantes.get(index).isAprobada()==false){
-            this.ListaPostulantes.get(index).setAprobada(true);
-            this.ListaPostulantes.get(index).setEstado("Aprobada");
+            if(SistemaDeBecas.listaSolicitudes.get(index).isAprobada()==false){
+            SistemaDeBecas.listaSolicitudes.get(index).setAprobada(true);
+            SistemaDeBecas.listaSolicitudes.get(index).setEstado("Aprobada");
             JOptionPane.showMessageDialog(this, "Estado Cambiado con Éxito", "!", JOptionPane.INFORMATION_MESSAGE);
-            mostrarES.setText(String.valueOf(ListaPostulantes.get(index).getEstado()));
+            mostrarES.setText(String.valueOf(SistemaDeBecas.listaSolicitudes.get(index).getEstado()));
             }else JOptionPane.showMessageDialog(this, "Ya está aprobada", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_cambioBeca1ActionPerformed
 

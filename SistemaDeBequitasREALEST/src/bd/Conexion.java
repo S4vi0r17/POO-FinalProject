@@ -3,7 +3,7 @@ package bd;
 import java.sql.Connection;
 
 public class Conexion {
-    // jdbc:mysql://localhost:3306/?user=root
+
     String bd ="sistemadebecasdb";
     String url = "jdbc:mysql://localhost:3306/";
     String user = "root";
@@ -20,6 +20,7 @@ public class Conexion {
         }
         return cx;
     }
+    
     public void desconectar() {
         try {
             cx.close();
@@ -27,14 +28,4 @@ public class Conexion {
             System.out.println("Error: "+e);
         }
     }
-    // public static void main(String[] args) {
-    //     Conexion c = new Conexion();
-    //     c.conectar();
-    //     if (c.conectar() != null) {
-    //         System.out.println("Conectado");
-    //     } else {
-    //         System.out.println("No conectado");
-    //     }
-    // }
 }
-

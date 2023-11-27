@@ -5,27 +5,21 @@
 package ClasesParaZava;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import java.util.ArrayList;
 public class ListaAlumnos extends javax.swing.JFrame {
 
-    ArrayList<Solicitud> ListaPostulantes = new ArrayList<>();
             
     DefaultListModel modelo = new DefaultListModel();
-    public ListaAlumnos(ArrayList<Solicitud> ListaPostulantes) {
+    public ListaAlumnos() {
         initComponents();
-        this.ListaPostulantes = ListaPostulantes;
         
         //Pasar la lista al modelo default
         //esta lista es la que se muestra
         this.naPostulante.setModel(modelo);
-        for(int i = 0; i<ListaPostulantes.size();i++){
-            modelo.addElement(ListaPostulantes.get(i).getPostulante().getNombre()+" " + ListaPostulantes.get(i).getPostulante().getApellido());
+        for(int i = 0; i<SistemaDeBecas.listaPostulante.size();i++){
+            modelo.addElement(SistemaDeBecas.listaPostulante.get(i).getNombre()+" " + SistemaDeBecas.listaPostulante.get(i).getApellido());
         }
     }
 
-    private ListaAlumnos() {
-        initComponents(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,11 +38,7 @@ public class ListaAlumnos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Lista de Alumnos");
 
-        naPostulante.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        naPostulante.setModel(modelo);
         jScrollPane1.setViewportView(naPostulante);
 
         jLabel1.setText("Lista de Nombres y Apellidos");
@@ -98,9 +88,12 @@ public class ListaAlumnos extends javax.swing.JFrame {
         int index = naPostulante.getSelectedIndex();
         if(index == -1){
             JOptionPane.showMessageDialog(this, "Debe elegir un postulante","Error",JOptionPane.ERROR_MESSAGE);
+        }else{if(index >= SistemaDeBecas.listaSolicitudes.size()){
+             JOptionPane.showMessageDialog(this, "Este postulante aun no tiene solicitudes","Error",JOptionPane.ERROR_MESSAGE);
         }else{
-            PerfilDetallado Persona = new PerfilDetallado(index,ListaPostulantes);
+            PerfilDetallado Persona = new PerfilDetallado(index);
             Persona.show();
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

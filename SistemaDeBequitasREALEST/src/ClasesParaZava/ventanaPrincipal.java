@@ -157,13 +157,13 @@ public class ventanaPrincipal extends JFrame {
         esp_DNI.setBounds(140, 140, 300, 30);
         panel.add(esp_DNI);
         
-        esp_contra= new JTextField();
-        esp_contra.setBounds(140,180,300,30);
-        panel.add(esp_contra);
-        
-        esp_usuario=new JTextField();
-        esp_usuario.setBounds(140,220,300,30);
+        esp_usuario= new JTextField();
+        esp_usuario.setBounds(140,180,300,30);
         panel.add(esp_usuario);
+        
+        esp_contra=new JTextField();
+        esp_contra.setBounds(140,220,300,30);
+        panel.add(esp_contra);
         
         esp_promedio=new JTextField();
         esp_promedio.setBounds(140,260,300,30);

@@ -123,7 +123,7 @@ public class SistemaDeBecas {
         
 }
     
-    static private void actualizarListaSolicitudes(Solicitud solicitud) {
+    static public void actualizarListaSolicitudes(Solicitud solicitud) {
     
         for (Solicitud s : SistemaDeBecas.listaSolicitudes) {
             if (s.equals(solicitud)) {

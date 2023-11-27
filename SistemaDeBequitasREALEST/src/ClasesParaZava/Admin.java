@@ -3,24 +3,10 @@ package ClasesParaZava;
 import java.util.ArrayList;
 
 public class Admin extends javax.swing.JFrame {
-    //Pasar la lista de:
-    //Solicitudes para la lista de alumnos
-    //Peronal para añadir personal
-    //Becas para añadir becas
-    ArrayList<Solicitud> ListaPostulantes = new ArrayList<>();
-    ArrayList<Personal> ListaPersonal = new ArrayList<>();
-    ArrayList<Beca> ListaBecas = new ArrayList<>();
-    public Admin(ArrayList<Solicitud> ListaPostulantes, ArrayList<Personal> ListaPersonal, ArrayList<Beca> ListaBecas) {
-        this.ListaPostulantes = ListaPostulantes;
-        this.ListaPersonal = ListaPersonal;
-        this.ListaBecas = ListaBecas;
+
+    public Admin() {
         initComponents();
     }
-
-    private Admin() {
-        initComponents();
-    }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -110,19 +96,19 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
           //Boton que abre la lista de alumnos
-          ListaAlumnos lista = new ListaAlumnos(ListaPostulantes);
+          ListaAlumnos lista = new ListaAlumnos();
           lista.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Boton que abre el interfaz de añadir personal
-        addPersonal addPersonal = new addPersonal(ListaPersonal,ListaPostulantes);
+        addPersonal addPersonal = new addPersonal();
         addPersonal.show();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //Boton que abre el interfaz de añadir beca
-        addBeca addBeca = new addBeca(ListaBecas);
+        addBeca addBeca = new addBeca();
         addBeca.show();
     }//GEN-LAST:event_jButton4ActionPerformed
 

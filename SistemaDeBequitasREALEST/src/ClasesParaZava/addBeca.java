@@ -5,10 +5,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
 public class addBeca extends javax.swing.JFrame {
-    //Pasar la lista de becas
-    ArrayList<Beca> ListaBecas = new ArrayList<>();
-    public addBeca(ArrayList<Beca> ListaBecas) {
-        this.ListaBecas = ListaBecas;
+
+    public addBeca() {
         initComponents();
         
         //Creación del grupo de botones
@@ -17,10 +15,6 @@ public class addBeca extends javax.swing.JFrame {
         ButtonGroup bg = new ButtonGroup();
         bg.add(isDepor);
         bg.add(isAcadem);
-    }
-
-    private addBeca() {
-        initComponents();
     }
 
     /**

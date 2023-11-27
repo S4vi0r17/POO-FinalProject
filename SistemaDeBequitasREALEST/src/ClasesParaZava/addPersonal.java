@@ -5,13 +5,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
 public class addPersonal extends javax.swing.JFrame {
-    //Pasar los ArrayList
-    //Para la comprobación
-    ArrayList<Personal> ListaPersonal = new ArrayList<>();
-    ArrayList<Solicitud> ListaPostulantes = new ArrayList<>();
-    public addPersonal(ArrayList<Personal> ListaPersonal, ArrayList<Solicitud> ListaPostulantes) {
-        this.ListaPersonal = ListaPersonal;
-        this.ListaPostulantes = ListaPostulantes;
+
+    public addPersonal() {
         initComponents();
         
         //Creación del grupo de botones
@@ -20,10 +15,6 @@ public class addPersonal extends javax.swing.JFrame {
         ButtonGroup bg = new ButtonGroup();
         bg.add(isEvaluador);
         bg.add(isEntrevistador);
-    }
-
-    private addPersonal() {
-        initComponents();
     }
     
     public static boolean comprobarPostulante(String DNI,ArrayList<Solicitud> Postulante) {
@@ -84,7 +75,7 @@ public class addPersonal extends javax.swing.JFrame {
         isEntrevistador = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Añadir Personal");
 
         jLabel1.setText("Bienvenido a Añadir Personal");
@@ -251,8 +242,8 @@ public class addPersonal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Comprueba el DNI del postulante 
-        if(comprobarPostulante(addDNI.getText(),ListaPostulantes)==true || 
-                comprobarEmpleado(addDNI.getText(),ListaPersonal)==true)
+        if(comprobarPostulante(addDNI.getText(),SistemaDeBecas.listaSolicitudes)==true || 
+                comprobarEmpleado(addDNI.getText(),SistemaDeBecas.listaPersonal)==true)
         {
             //Mensaje de error si ya esta inscrito
             JOptionPane.showMessageDialog(this, "El Personal ya está inscrito","Error al añadir Personal",JOptionPane.ERROR_MESSAGE);
@@ -260,7 +251,6 @@ public class addPersonal extends javax.swing.JFrame {
             //Añadir el personal si es evaluador
             Personal nuevoPersonal = new Evaluador(addNombre.getText(), addApellido.getText(), Integer.parseInt(addEdad.getText()), addDNI.getText(), Integer.parseInt(addCredencial.getText()), addUsuario.getText(), addContraseña.getText());
             SistemaDeBecas.listaPersonal.add(nuevoPersonal);
-            System.out.println(SistemaDeBecas.listaPersonal);
             JOptionPane.showMessageDialog(this, "Personal añadido con exito", "OK", JOptionPane.INFORMATION_MESSAGE);
             File.guardar(SistemaDeBecas.listaPersonal, "PERSONALES.txt");
         }else{
@@ -269,7 +259,6 @@ public class addPersonal extends javax.swing.JFrame {
             //mira main y se arregla xd
             Personal nuevoPersonal = new Entrevistador(addNombre.getText(), addApellido.getText(), Integer.parseInt(addEdad.getText()), addDNI.getText(), Integer.parseInt(addCredencial.getText()), addUsuario.getText(), addContraseña.getText());
             SistemaDeBecas.listaPersonal.add(nuevoPersonal);
-            System.out.println(SistemaDeBecas.listaPersonal);
             JOptionPane.showMessageDialog(this, "Personal añadido con exito", "OK", JOptionPane.INFORMATION_MESSAGE);
             File.guardar(SistemaDeBecas.listaPersonal, "PERSONALES.txt");
         }

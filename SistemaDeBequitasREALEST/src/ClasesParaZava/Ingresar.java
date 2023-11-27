@@ -103,14 +103,14 @@ public class Ingresar extends javax.swing.JFrame {
                     }
                 }
                 
-                for(int i=0;i<SistemaDeBecas.listaPersonal.size();i++)
+                for(int j=0;j<SistemaDeBecas.listaPersonal.size();j++)
                 {
                     
-                    if(SistemaDeBecas.getListaPersonal().get(i).getContra().equals(String.valueOf(reviseContraseña.getPassword())) &&
-                            SistemaDeBecas.getListaPersonal().get(i).getUsuario().equals(reviseUsuario.getText()))
+                    if(SistemaDeBecas.getListaPersonal().get(j).getContra().equals(String.valueOf(reviseContraseña.getPassword())) &&
+                            SistemaDeBecas.getListaPersonal().get(j).getUsuario().equals(reviseUsuario.getText()))
                     {
                         per=true;
-                        actual=i;
+                        actual=j;
                         break;
                     }
                 }
